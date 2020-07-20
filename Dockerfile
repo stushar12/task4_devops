@@ -1,6 +1,8 @@
 FROM centos:latest
-RUN yum install /sbin/service -y
-RUN yum install httpd -y
-COPY . /usr/local/apache2/htdocs/
+
+RUN yum install httpd -y 
+RUN yum install php -y
+COPY *.html /var/www/html
 CMD /usr/sbin/httpd -DFOREGROUND && /bin/bash
-EXPOSE 80
+COPY file.html /var/www/html/
+EXPOSE 80 
